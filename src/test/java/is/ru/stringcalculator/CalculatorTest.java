@@ -26,7 +26,12 @@ public class CalculatorTest {
 
 	@Test
     public void testMultipleNumbers(){
-    	assertEquals(0, Calculator.add("1,2,3"));
+    	assertEquals(6, Calculator.add("1,2,3"));
+    }
+
+    @Test
+    public void testNewLine(){
+    	assertEquals(5, Calculator.add("2\n3"));
     }
 
 }
