@@ -8,6 +8,9 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.startsWith("//")){
+			return sum(splitByDelimeter(text));
+		}
 		else if(text.contains("-"))
 		{
 			String[] numbers = splitNumbers(text);
@@ -60,5 +63,12 @@ public class Calculator {
 		     
 		}
 		return total;
+    }
+
+    private static String[] splitByDelimeter(String text) {
+    	String[] part = text.split("\n");
+		String delimiter = part[0].substring(2);
+		text = part[1];
+	    return text.split(delimiter);
     }
 }

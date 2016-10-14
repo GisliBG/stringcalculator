@@ -62,4 +62,9 @@ public class CalculatorTest {
     public void testIfNumberIsBiggerThen1000() {
     	assertEquals(1001, Calculator.add("1000,3000,1,1001"));
     }
+
+    @Test
+    public void testChangingDelimeter() {
+    	assertEquals(3, Calculator.add("//;\n1;2"));
+    }
 }
