@@ -1,5 +1,7 @@
 package is.ru.stringcalculator;
 
+import java.util.ArrayList;
+
 public class Calculator {
 
 	public static int add(String text){
@@ -8,18 +10,30 @@ public class Calculator {
 		}
 		else if(text.contains("-"))
 		{
-			String error = "Negatives not allowed: -4";
-			int i = text.indexOf('-');
-			while(i >= 0) {
-				if(text.lastIndexOf(text) == i + 1) {
-					error.concat(text.substring(i, i + 1));	
+			String[] numbers = splitNumbers(text);
+			ArrayList<Integer> negatives = new ArrayList<Integer>();
+			String error = "Negatives not allowed: ";
+			
+			for(String number : numbers) {
+				if(toInt(number) < 0) {
+					negatives.add(toInt(number));
 				}
-				else {
-					error.concat(text.substring(i, i + 2));	
-				}
-				i = text.indexOf('-', i + 1);
 			}
+
+			String x = "";
+
+			if(negatives.size() > 1) {
+
+				for(int i = 0; i < negatives.size() - 1; i++) {
+					x = negatives.get(i).toString();
+					error = error + x + ",";
+				}
+			}
+			x = negatives.get(negatives.size() - 1).toString();
+			error = error + x;
+			
 			throw new IllegalArgumentException(error);
+			
 		}
 		else if(text.contains(",") || text.contains("\n")){
 			return sum(splitNumbers(text));
@@ -43,7 +57,4 @@ public class Calculator {
 		}
 		return total;
     }
-
-
-
 }

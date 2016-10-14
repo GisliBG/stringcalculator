@@ -36,7 +36,6 @@ public class CalculatorTest {
     	assertEquals(5, Calculator.add("2\n3"));
     }
 
-
     @Test
     public void testNegativeNumber() {
     	IllegalArgumentException exception = null;
@@ -45,7 +44,6 @@ public class CalculatorTest {
     	} catch (IllegalArgumentException e) {
         	exception = e;
     	}
-	    assertEquals("Negatives not allowed: -4", exception.getMessage());
+	    assertEquals("Negatives not allowed: -1", exception.getMessage());
     }
-
 }
