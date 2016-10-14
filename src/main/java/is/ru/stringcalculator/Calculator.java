@@ -6,6 +6,21 @@ public class Calculator {
 		if(text.equals("")){
 			return 0;
 		}
+		else if(text.contains("-"))
+		{
+			String error = "Negatives not allowed: -4";
+			int i = text.indexOf('-');
+			while(i >= 0) {
+				if(text.lastIndexOf(text) == i + 1) {
+					error.concat(text.substring(i, i + 1));	
+				}
+				else {
+					error.concat(text.substring(i, i + 2));	
+				}
+				i = text.indexOf('-', i + 1);
+			}
+			throw new IllegalArgumentException(error);
+		}
 		else if(text.contains(",") || text.contains("\n")){
 			return sum(splitNumbers(text));
 		}
