@@ -53,7 +53,11 @@ public class Calculator {
     private static int sum(String[] numbers){
  	    int total = 0;
         for(String number : numbers){
-		    total += toInt(number);
+		    int toBeAdded = toInt(number);
+		    if(toBeAdded < 1001) {
+		    	total += toBeAdded;	
+		    }
+		     
 		}
 		return total;
     }
